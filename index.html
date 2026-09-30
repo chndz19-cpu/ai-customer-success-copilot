@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AI Customer Success Copilot — Carlos Hernández Acosta</title>
+<meta name="description" content="A portfolio prototype that turns customer context into a structured Customer Success action plan.">
+<style>
+:root{--navy:#0d2748;--navy2:#163a63;--gold:#b9892f;--cream:#fbf8f0;--ink:#152235;--muted:#617083;--line:#dfe5ec;--white:#fff;--green:#20755a;--red:#a43f3f}
+*{box-sizing:border-box} body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:#f5f7fa}
+a{color:inherit}.wrap{max-width:1180px;margin:auto;padding:0 24px}.nav{background:var(--navy);color:white;padding:16px 0;position:sticky;top:0;z-index:10}
+.navin{display:flex;justify-content:space-between;align-items:center;gap:16px}.brand{font-weight:800;letter-spacing:.2px}.badge{font-size:12px;border:1px solid #d5b66c;color:#f5d98f;padding:7px 10px;border-radius:999px}
+.hero{background:linear-gradient(120deg,var(--navy),#102f55 65%,#1d456f);color:white;padding:74px 0 64px}.eyebrow{color:#e3bd68;font-size:13px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase}
+h1{font-size:clamp(38px,6vw,72px);line-height:.98;margin:14px 0 18px;max-width:900px}.hero p{font-size:20px;line-height:1.6;color:#dbe5ef;max-width:760px}
+.pills{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}.pill{background:#ffffff12;border:1px solid #ffffff28;padding:9px 12px;border-radius:999px;font-size:13px}
+section{padding:62px 0}.section-title{font-size:34px;margin:0 0 10px}.lead{color:var(--muted);max-width:760px;line-height:1.7;margin:0 0 28px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}.card{background:white;border:1px solid var(--line);border-radius:18px;padding:26px;box-shadow:0 8px 28px #17314e0a}
+.card h3{margin:0 0 8px}.card p{color:var(--muted);line-height:1.6}.form label{font-weight:700;font-size:13px;display:block;margin:0 0 7px}
+input,select,textarea{width:100%;border:1px solid #cfd8e3;border-radius:10px;padding:12px 13px;font:inherit;background:white;color:var(--ink);outline:none}
+textarea{min-height:90px;resize:vertical}input:focus,textarea:focus,select:focus{border-color:#6e8fb4;box-shadow:0 0 0 3px #6e8fb422}
+.field{margin-bottom:17px}.twocol{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+button{border:0;border-radius:11px;padding:13px 18px;font-weight:800;cursor:pointer}.primary{background:var(--navy);color:white}.secondary{background:#edf2f7;color:var(--navy)}
+.actions{display:flex;gap:10px;flex-wrap:wrap}.result{display:none}.result.show{display:block}.result-head{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-bottom:18px}
+.score{width:64px;height:64px;border-radius:50%;display:grid;place-items:center;background:var(--cream);border:5px solid #d8b563;font-weight:900;color:var(--navy)}
+.out{border-top:1px solid var(--line);padding:18px 0}.out:first-of-type{border-top:0}.out h4{margin:0 0 8px;color:var(--navy)}.out p,.out li{color:#4d5e70;line-height:1.65}
+.out ul{margin:8px 0 0;padding-left:20px}.risk{display:inline-block;padding:6px 10px;border-radius:999px;font-size:12px;font-weight:800;background:#fff0e9;color:#8b4328}
+.demo{background:var(--cream)}.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.stepnum{font-size:36px;color:var(--gold);font-family:Georgia,serif}
+.disclaimer{background:#eef3f8;border-left:4px solid var(--navy);padding:18px 20px;border-radius:8px;color:#4e6073;line-height:1.6}
+footer{background:#081d36;color:#cbd7e5;padding:34px 0;font-size:14px}.footerin{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+@media(max-width:800px){.grid,.steps,.twocol{grid-template-columns:1fr}.hero{padding:54px 0}.navin{align-items:flex-start}.section-title{font-size:29px}}
+@media print{.nav,.actions,.form{display:none!important}.hero{padding:25px;background:white;color:#111}.hero p{color:#333}.result{display:block!important}section{padding:25px 0}.card{box-shadow:none}}
+</style>
+</head>
+<body>
+<nav class="nav"><div class="wrap navin"><div class="brand">AI Customer Success Copilot</div><div class="badge">PORTFOLIO PROTOTYPE</div></div></nav>
+
+<header class="hero"><div class="wrap">
+<div class="eyebrow">Customer Success × AI × Structured Workflows</div>
+<h1>Turn customer context into clear, proactive success actions.</h1>
+<p>A functional portfolio prototype designed to help Customer Success teams organize account context, surface risks, plan next actions, prepare QBR conversations, and recognize expansion signals.</p>
+<div class="pills"><span class="pill">Onboarding & Adoption</span><span class="pill">Risk Signals</span><span class="pill">Next Best Actions</span><span class="pill">QBR Preparation</span><span class="pill">Expansion Signals</span></div>
+</div></header>
+
+<section><div class="wrap">
+<h2 class="section-title">Try the Copilot</h2>
+<p class="lead">Enter a customer scenario. The prototype applies a transparent rules-based decision workflow to produce a Customer Success plan. It is intentionally not presented as production AI or a live LLM integration.</p>
+<div class="grid">
+<div class="card form">
+<div class="twocol">
+<div class="field"><label>Customer / Company</label><input id="company" value="Northstar Labs"></div>
+<div class="field"><label>Lifecycle stage</label><select id="stage"><option>Onboarding</option><option selected>Adoption</option><option>Renewal</option><option>Expansion</option></select></div>
+</div>
+<div class="field"><label>Primary customer goal</label><textarea id="goal">Expand usage from one team to multiple departments and establish measurable workflow adoption.</textarea></div>
+<div class="twocol">
+<div class="field"><label>Product adoption</label><select id="adoption"><option>High</option><option selected>Medium</option><option>Low</option></select></div>
+<div class="field"><label>Executive sponsor engagement</label><select id="sponsor"><option>High</option><option>Medium</option><option selected>Low</option></select></div>
+</div>
+<div class="field"><label>Recent customer context</label><textarea id="context">Onboarding is complete. One operations team is active, but other departments have not adopted the workflow yet. The executive sponsor has not joined the last two check-ins.</textarea></div>
+<div class="field"><label>Known risk or blocker</label><textarea id="blocker">Limited executive engagement and adoption concentrated in a single team.</textarea></div>
+<div class="actions"><button class="primary" onclick="generatePlan()">Generate Success Plan</button><button class="secondary" onclick="loadDemo()">Load Example</button></div>
+</div>
+
+<div class="card result" id="result">
+<div class="result-head"><div><div class="eyebrow" style="color:#9b7429">CUSTOMER SUCCESS ACTION PLAN</div><h3 id="rCompany" style="font-size:27px;margin-top:5px"></h3></div><div class="score" id="health">72</div></div>
+<div class="out"><h4>Customer Summary</h4><p id="summary"></p></div>
+<div class="out"><h4>Goals & Success Criteria</h4><p id="goals"></p></div>
+<div class="out"><h4>Risk Signals</h4><span class="risk" id="riskLevel"></span><ul id="risks"></ul></div>
+<div class="out"><h4>Next Best Actions</h4><ul id="actionsList"></ul></div>
+<div class="out"><h4>QBR Talking Points</h4><ul id="qbr"></ul></div>
+<div class="out"><h4>Expansion Signals</h4><p id="expansion"></p></div>
+<div class="actions"><button class="secondary" onclick="window.print()">Print / Save as PDF</button></div>
+</div>
+</div>
+</div></section>
+
+<section class="demo"><div class="wrap">
+<h2 class="section-title">How it works</h2><p class="lead">The workflow separates context capture, structured analysis, and action planning so the reasoning is repeatable and easy to review.</p>
+<div class="steps">
+<div class="card"><div class="stepnum">01</div><h3>Capture</h3><p>Collect goals, lifecycle stage, adoption, sponsor engagement, recent interactions, and known blockers.</p></div>
+<div class="card"><div class="stepnum">02</div><h3>Analyze</h3><p>Evaluate account health signals, identify risks, and connect the customer’s stated goal to measurable success criteria.</p></div>
+<div class="card"><div class="stepnum">03</div><h3>Act</h3><p>Generate prioritized next actions, QBR talking points, and expansion signals without pushing growth before value is demonstrated.</p></div>
+</div>
+</div></section>
+
+<section><div class="wrap">
+<div class="grid">
+<div><h2 class="section-title">Why I built it</h2><p class="lead">I built this prototype to explore how AI-oriented workflows can help Customer Success teams move from reactive support to structured, proactive relationship management. It combines my background in client relationship management and portfolio growth with my ongoing development in AI, prompting, and data analytics.</p></div>
+<div class="card"><h3>What I’m learning</h3><p>Prompt design • Structured workflows • Customer Success metrics • Responsible AI • Translating business context into repeatable processes</p></div>
+</div>
+<div class="disclaimer"><strong>Prototype note:</strong> This is a portfolio concept and functional front-end prototype. The current demo uses transparent browser-based decision logic rather than a live AI model, external API, CRM integration, or production customer data. It is designed to demonstrate product thinking, workflow design, and practical Customer Success use cases.</div>
+</div></section>
+
+<footer><div class="wrap footerin"><strong>Carlos Hernández Acosta</strong><span>Strategic Accounts • Customer Success • Financial Services • AI & Data</span></div></footer>
+
+<script>
+function esc(s){return (s||"").trim()}
+function li(items){return items.map(x=>"<li>"+x+"</li>").join("")}
+function generatePlan(){
+ const c=esc(company.value)||"Customer", st=stage.value, g=esc(goal.value), a=adoption.value, sp=sponsor.value, ctx=esc(context.value), bl=esc(blocker.value);
+ let score=88, risks=[], acts=[], q=[];
+ if(a==="Medium"){score-=12;risks.push("Adoption is developing but not yet broad enough to prove durable value.");}
+ if(a==="Low"){score-=25;risks.push("Low product adoption may delay time-to-value and increase retention risk.");}
+ if(sp==="Medium"){score-=8;risks.push("Executive sponsorship is inconsistent; strategic alignment could weaken.");}
+ if(sp==="Low"){score-=18;risks.push("Low executive sponsor engagement may limit internal alignment and expansion.");}
+ if(bl){score-=5;risks.push("Known blocker: "+bl);}
+ score=Math.max(30,Math.min(96,score));
+ acts.push("Confirm the customer’s success criteria and translate them into 30-day measurable milestones.");
+ if(a!=="High") acts.push("Identify active users and internal champions, then map a targeted adoption plan for the next team or workflow.");
+ if(sp!=="High") acts.push("Re-engage the executive sponsor with a concise value update, current outcomes, open risks, and one clear decision request.");
+ acts.push("Schedule the next success checkpoint with owners, dates, and evidence required to confirm progress.");
+ if(st==="Renewal") acts.push("Build a renewal readiness plan using achieved outcomes, adoption evidence, unresolved risks, and stakeholder alignment.");
+ q.push("Progress against the customer’s original business goal and agreed success criteria.");
+ q.push("Adoption trend: active teams, workflows in use, and where usage is stalled.");
+ q.push("Business outcomes achieved, unresolved risks, and decisions needed from stakeholders.");
+ q.push("Next-quarter priorities with owners, milestones, and expected value.");
+ let ex = a==="High" && sp!=="Low" ? "Expansion readiness is promising. Validate value realization first, then explore adjacent teams or workflows where the same outcome can be replicated." :
+ "Treat expansion as a future signal, not the immediate objective. First strengthen adoption, document value, and restore stakeholder alignment; then test expansion based on demonstrated outcomes.";
+ rCompany.textContent=c+" · "+st;
+ health.textContent=score;
+ summary.textContent=c+" is in the "+st.toLowerCase()+" stage with "+a.toLowerCase()+" adoption and "+sp.toLowerCase()+" executive sponsor engagement. "+(ctx||"Additional account context should be captured before the next customer interaction.");
+ goals.textContent=(g||"Clarify the primary business goal with the customer.")+" Success should be measured through agreed adoption milestones, stakeholder engagement, and evidence of business value.";
+ riskLevel.textContent=score>=80?"LOW–MODERATE RISK":score>=60?"MODERATE RISK":"ELEVATED RISK";
+ risks.innerHTML=li(risks.length?risks:["No major risk signal entered; continue monitoring adoption, stakeholder engagement, and value realization."]);
+ actionsList.innerHTML=li(acts); qbr.innerHTML=li(q); expansion.textContent=ex;
+ result.classList.add("show"); result.scrollIntoView({behavior:"smooth",block:"start"});
+}
+function loadDemo(){
+ company.value="Northstar Labs"; stage.value="Adoption"; goal.value="Expand usage from one team to multiple departments and establish measurable workflow adoption."; adoption.value="Medium"; sponsor.value="Low"; context.value="Onboarding is complete. One operations team is active, but other departments have not adopted the workflow yet. The executive sponsor has not joined the last two check-ins."; blocker.value="Limited executive engagement and adoption concentrated in a single team."; generatePlan();
+}
+</script>
+</body></html>
